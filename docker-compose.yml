@@ -1,0 +1,20 @@
+
+# docker-compose.yml
+version: '2'
+
+services :
+
+    planner : 
+        build : ./planner
+        ports: 
+            - "3000:3000"
+        depends_on:
+            - worker
+
+    worker : 
+        build : ./worker
+        ports: 
+            - "8080:8080"
+        
+        
+    
