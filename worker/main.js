@@ -1,7 +1,7 @@
 require('dotenv').config()
 const express = require('express')
 const app = express()
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 3000 || 3001
 const randInt = (min, max) => Math.floor(Math.random() * (max - min)) + min
 let mult = false
 let add = false
@@ -63,5 +63,5 @@ app.get('/', (req, res) => {
 })
 
 app.listen(port, () => {
-  console.log(`Worker listening at http://localhost:${port}`)
+  console.log(`Worker listening at http://172.16.8.18:${port}`)
 })

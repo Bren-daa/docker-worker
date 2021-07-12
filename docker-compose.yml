@@ -7,14 +7,35 @@ services :
     planner : 
         build : ./planner
         ports: 
-            - "3000:3000"
-        depends_on:
-            - worker
-
-    worker : 
-        build : ./worker
-        ports: 
             - "8080:8080"
+        depends_on:
+            - worker1
+            - worker2
+
+    worker2 : 
+        environment: 
+            - PORT=3001
+            - MULT=true
+        build : ./worker
+        image : worker2
+        ports: 
+            - "3001:3001"
+        container_name: worker2
+        extra_hosts:
+            - host.docker.internal:host-gateway
+
+    worker1 : 
+        environment: 
+            - PORT=3000
+            - ADD=true
+        build : ./worker
+        image : worker1
+        ports: 
+            - "3000:3000"
+        container_name: worker1
+        extra_hosts:
+            - host.docker.internal:host-gateway
         
-        
+     
+            
     
