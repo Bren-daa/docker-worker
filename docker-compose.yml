@@ -1,4 +1,3 @@
-
 # docker-compose.yml
 version: '2'
 
@@ -9,13 +8,15 @@ services :
         ports: 
             - "8080:8080"
         depends_on:
-            - worker1
+            - worker
             - worker2
+            - worker3
+            - worker4
 
     worker2 : 
         environment: 
             - PORT=3001
-            - MULT=true
+          #  - MULT=true
         build : ./worker
         image : worker2
         ports: 
@@ -24,18 +25,36 @@ services :
         extra_hosts:
             - host.docker.internal:host-gateway
 
-    worker1 : 
+    worker4 : 
         environment: 
-            - PORT=3000
-            - ADD=true
+            - PORT=3004
         build : ./worker
-        image : worker1
+        image : worker4
         ports: 
-            - "3000:3000"
-        container_name: worker1
+            - "3004:3004"
+        container_name: worker4
         extra_hosts:
             - host.docker.internal:host-gateway
-        
-     
-            
     
+    worker3 : 
+        environment: 
+            - PORT=3003
+        build : ./worker
+        image : worker3
+        ports: 
+            - "3003:3003"
+        container_name: worker3
+        extra_hosts:
+            - host.docker.internal:host-gateway
+
+    worker : 
+        environment: 
+            - PORT=3000
+           # - ADD=true
+        build : ./worker
+        image : worker
+        ports: 
+            - "3000:3000"
+        container_name: worker
+        extra_hosts:
+            - host.docker.internal:host-gateway

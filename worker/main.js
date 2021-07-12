@@ -1,7 +1,7 @@
 require('dotenv').config()
 const express = require('express')
 const app = express()
-const port = process.env.PORT || 3000 || 3001
+const port = process.env.PORT || 3000 || 3001 || 3003 || 3004 
 const randInt = (min, max) => Math.floor(Math.random() * (max - min)) + min
 let mult = false
 let add = false
@@ -14,7 +14,7 @@ app.use(
   })
 )
 
-if (process.env.MULT)
+if (true)
   app.post('/mult', (req, res) => {
     if (mult) {
       console.error('mult', 'Already working')
@@ -32,7 +32,7 @@ if (process.env.MULT)
     }, duration)
   })
 
-if (process.env.ADD)
+if (true)
   app.post('/add', (req, res) => {
     if (add) {
       console.error('add', 'Already working')

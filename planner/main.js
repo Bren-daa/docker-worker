@@ -9,7 +9,7 @@ const args = () => ({ a: randInt(0, 40), b: randInt(0, 40) })
 const generateTasks = i =>
   new Array(i).fill(1).map(_ => ({ type: taskType(), args: args() }))
 
-let workers = ['http://172.16.8.18:3000','http://172.16.8.18:3001']
+let workers = ['http://172.16.8.18:3000','http://172.16.8.18:3001','http://172.16.8.18:3003','http://172.16.8.18:3004']
 let tasks = generateTasks(nbTasks)
 let taskToDo = nbTasks
 
